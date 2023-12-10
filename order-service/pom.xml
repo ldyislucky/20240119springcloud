@@ -9,5 +9,19 @@
     <groupId>com.ldy</groupId>
     <artifactId>order-service</artifactId>
     <name>Archetype - order-service</name>
+    <dependencies>
+
+    </dependencies>
+
+<!--    启动失败的原因就是因为在模块中没有配置spring-maven插件，父工程中配置这个没有用，模块中配置才有用-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.4.5</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
