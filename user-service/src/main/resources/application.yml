@@ -3,7 +3,7 @@ server:
 spring:
   application:
     #应用的名称
-    name: order-service
+    name: user-service
   profiles:
     active: dev
   datasource:

@@ -11,7 +11,10 @@
     <name>Archetype - user-service</name>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
     </dependencies>
 
     <!--    启动失败的原因就是因为在模块中没有配置spring-maven插件，父工程中配置这个没有用，模块中配置才有用-->

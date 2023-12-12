@@ -1,10 +1,7 @@
 reggie:
   path: D:\D\document\javaprograms1\caogao\img
 spring:
-  datasource:
-    druid:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://192.168.46.130:3306/cloud_order?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
-      username: general
-      password: general
+  cloud:
+    nacos:
+      server-addr: localhost:8848
 
