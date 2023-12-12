@@ -1,9 +1,6 @@
 server:
   port: 8080
 spring:
-  application:
-    #应用的名称
-    name: order-service
   profiles:
     active: dev
   datasource:
