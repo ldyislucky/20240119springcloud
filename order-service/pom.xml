@@ -9,6 +9,7 @@
     <groupId>com.ldy</groupId>
     <artifactId>order-service</artifactId>
     <name>Archetype - order-service</name>
+
     <dependencies>
 
     </dependencies>

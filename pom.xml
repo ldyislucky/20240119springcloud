@@ -27,7 +27,6 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <dependencyManagement>
         <dependencies>
             <!-- springCloud -->
             <dependency>
@@ -77,6 +76,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
+                <version>1.18.28</version>
             </dependency>
 
             <dependency>
@@ -114,11 +114,4 @@
                 <version>1.1.23</version>
             </dependency>
         </dependencies>
-    </dependencyManagement>
-
-
-
-
-
-
 </project>
