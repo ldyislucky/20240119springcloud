@@ -8,13 +8,25 @@ spring:
     nacos:
       # Nacos 服务器地址
       server-addr: 127.0.0.1:8848
+      # 应用程序的命名空间 ,如果放在了config下边，那么就只能读取dev空间的配置，而无法将服务启动到命名空间，只有放在这个位置，才能启动到dev空间
+     #namespace: c44ea5b1-5a7a-4ec6-bf02-fbee39d29856
       config:
-        # 应用程序的命名空间
+        #试一下热更新能生效不，不能生效，球用没有
+        enabled: true
+        # 应用程序的命名空间，放在了config下边，那么就只能读取dev空间的配置，
         namespace: c44ea5b1-5a7a-4ec6-bf02-fbee39d29856
         # 配置文件的数据 ID
         file-extension: yaml # 配置文件扩展名，可选配置
 
-#在指定的命名空间中（没配置就是pulic)中寻找名称为  {”order-service“ +  "-dev" (可有可无）  +   “yaml" }  的文档。
+#在指定命名空间的情况下
+#在指定的命名空间中（没配置就是public)中寻找名称为  {”order-service“ +  "-dev" (不带后缀-dev的文档也能被加载）  +   “yaml" }  的文档。
+
+#
+
+
+
+
+
 
 
 
