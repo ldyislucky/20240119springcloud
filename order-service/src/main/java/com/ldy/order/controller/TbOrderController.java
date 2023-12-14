@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 //@RefreshScope//这种热更新的方式应该是只适用于这个类，可能没有很方便
 public class TbOrderController {
 
-    @Value("${nacos.pattern.dateformat}")
+    //@Value("${nacos.pattern.dateformat}")  //与@RefreshScope配合使用
     private String nacos;
 
     /**

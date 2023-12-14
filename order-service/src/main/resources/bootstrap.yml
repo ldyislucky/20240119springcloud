@@ -3,11 +3,11 @@ spring:
     #应用的名称 启动失败与在这个地方是否配置服务名称无关
     name: order-service
   profiles:
-    active: test
+    active: dev
   cloud:
     nacos:
-      # Nacos 服务器地址
-      server-addr: 127.0.0.1:8848
+      # Nacos 服务器地址（后来修改为了nginx的地址）
+      server-addr: 127.0.0.1:80
       config:
         #试一下热更新能生效不，不能生效，球用没有
         enabled: true
