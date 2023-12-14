@@ -12,4 +12,5 @@ public class NacosConfig {
     private String dateformat;
     private String dis;
     private String str1;
+    private String str2;
 }
