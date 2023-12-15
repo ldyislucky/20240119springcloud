@@ -36,6 +36,11 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: ASSIGN_ID
+feign:
+  client:
+    config:
+      default:
+        logger-level: full
 
 
 

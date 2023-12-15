@@ -29,5 +29,9 @@ public class TbUserController {
         TbUser tbUser = iTbUserService.getById(id);
         return R.success(tbUser);
     }
+    @GetMapping("user/{id}")
+    public TbUser getUserById(@PathVariable("id") Long id){
+        return iTbUserService.getById(id);
+    }
 
 }

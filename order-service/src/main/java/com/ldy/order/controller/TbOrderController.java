@@ -2,9 +2,12 @@ package com.ldy.order.controller;
 
 
 import com.ldy.order.config.NacosConfig;
+import com.ldy.order.entity.DTO.TbOrderDTO;
 import com.ldy.order.entity.TbOrder;
+import com.ldy.order.entity.TbUser;
 import com.ldy.order.general.R;
 import com.ldy.order.service.ITbOrderService;
+import com.xiaoleilu.hutool.bean.BeanUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -35,13 +38,25 @@ public class TbOrderController {
      * 通过@ConfigurationProperties(prefix = "nacos.pattern")的方式热更新，推荐的方式
      */
     private final NacosConfig nacosConfig;
-
     private final ITbOrderService iTbOrderService;
+    private final UserClients userClients;
     @GetMapping("/{id}")
     public R<TbOrder> getOrder(@PathVariable("id") Long id){
         TbOrder tbOrder = iTbOrderService.getById(id);
         return R.success(tbOrder);
     }
+
+    @GetMapping("/feign/{id}")
+    public R<TbOrderDTO> getOrderDto(@PathVariable("id") Long id){
+        TbOrder tbOrder = iTbOrderService.getById(id);
+        TbOrderDTO tbOrderDTO = new TbOrderDTO();
+        BeanUtil.copyProperties(tbOrder,tbOrderDTO);
+        TbUser tbUser = userClients.getById(tbOrder.getUserId());
+        tbOrderDTO.setTbUser(tbUser);
+        return R.success(tbOrderDTO);
+    }
+
+
 
     @GetMapping ("/t1")
     public R<String> getnacos(){
