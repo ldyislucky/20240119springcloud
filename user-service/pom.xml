@@ -11,7 +11,10 @@
     <name>Archetype - user-service</name>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
     </dependencies>
 
     <!--    启动失败的原因就是因为在模块中没有配置spring-maven插件，父工程中配置这个没有用，模块中配置才有用-->

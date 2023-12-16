@@ -11,15 +11,21 @@ spring:
 #  cloud:
 #    nacos:
 #      server-addr: localhost:80 # Nacos 配置中心的地址
-    gateway:
-      routes:
-        - id: GoUserService #规则id
-          uri: lb://user-service #负载均衡到user-service服务上
-          predicates:
-            - Path=/tb-user/** #端口号后边是不是以tb-user开头，是的换就负载均衡到user-service服务上
-        - id: GoOrderService
-          uri: lb://order-service
-          predicates:
-            - Path=/tb-order/** #端口号后边是不是以tb-user开头，是的换就负载均衡到user-service服务上
+  gateway:
+    routes:
+      - id: GoUserService #规则id
+        uri: lb://user-service #负载均衡到user-service服务上
+        predicates:
+          - Path=/tb-user/** #端口号后边是不是以tb-user开头，是的换就负载均衡到user-service服务上
+      - id: GoOrderService
+        uri: lb://order-service
+        predicates:
+          - Path=/tb-order/** #端口号后边是不是以tb-user开头，是的换就负载均衡到user-service服务上
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.46.130:3306/cloud_order?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: general
+      password: general
 
 
