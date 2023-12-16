@@ -1,0 +1,25 @@
+server:
+  port: 10010
+#logging:
+#  level:
+#    cn.itcast: debug
+#  pattern:
+#    dateformat: MM-dd HH:mm:ss:SSS
+spring:
+#  application:
+#    name: getway
+#  cloud:
+#    nacos:
+#      server-addr: localhost:80 # Nacos 配置中心的地址
+    gateway:
+      routes:
+        - id: GoUserService #规则id
+          uri: lb://user-service #负载均衡到user-service服务上
+          predicates:
+            - Path=/tb-user/** #端口号后边是不是以tb-user开头，是的换就负载均衡到user-service服务上
+        - id: GoOrderService
+          uri: lb://order-service
+          predicates:
+            - Path=/tb-order/** #端口号后边是不是以tb-user开头，是的换就负载均衡到user-service服务上
+
+

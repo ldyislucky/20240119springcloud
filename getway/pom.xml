@@ -7,21 +7,15 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.ldy</groupId>
-    <artifactId>user-service</artifactId>
-    <name>Archetype - user-service</name>
+    <artifactId>getway</artifactId>
+    <name>Archetype - getway</name>
 
     <dependencies>
-
+        <!--网关gateway依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
     </dependencies>
-
-    <!--    启动失败的原因就是因为在模块中没有配置spring-maven插件，父工程中配置这个没有用，模块中配置才有用-->
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
