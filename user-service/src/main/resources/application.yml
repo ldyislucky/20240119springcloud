@@ -37,10 +37,12 @@ mybatis-plus:
     db-config:
       id-type: ASSIGN_ID
 feign:
-  client:
-    config:
-      default:
-        logger-level: full
+  httpclient:
+    enabled: true #支持httpclient的开关
+#  client:
+#    config:
+#      default:
+#        logger-level: full #有空了再研究为啥球用没有了吧
 
 
 
