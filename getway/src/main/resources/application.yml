@@ -24,4 +24,4 @@ spring:
       username: general
       password: general
 
-
+#mybatis依赖和数据库配置缺一不可，只要有缺的getway就没办法启动
