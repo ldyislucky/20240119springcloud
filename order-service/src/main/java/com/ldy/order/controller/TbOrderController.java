@@ -1,16 +1,15 @@
 package com.ldy.order.controller;
 
 
+import com.ldy.feign.client.UserClients;
+import com.ldy.feign.entity.TbUser;
 import com.ldy.order.config.NacosConfig;
 import com.ldy.order.entity.DTO.TbOrderDTO;
 import com.ldy.order.entity.TbOrder;
-import com.ldy.order.entity.TbUser;
 import com.ldy.order.general.R;
 import com.ldy.order.service.ITbOrderService;
 import com.xiaoleilu.hutool.bean.BeanUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,7 +1,8 @@
 package com.ldy.order.entity.DTO;
 
+import com.ldy.feign.entity.TbUser;
 import com.ldy.order.entity.TbOrder;
-import com.ldy.order.entity.TbUser;
+
 import lombok.Data;
 
 @Data

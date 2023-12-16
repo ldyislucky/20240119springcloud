@@ -1,4 +1,4 @@
-package com.ldy.order.entity;
+package com.ldy.feign.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

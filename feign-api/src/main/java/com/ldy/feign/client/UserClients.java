@@ -1,6 +1,7 @@
-package com.ldy.order.controller;
+package com.ldy.feign.client;
 
-import com.ldy.order.entity.TbUser;
+
+import com.ldy.feign.entity.TbUser;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
