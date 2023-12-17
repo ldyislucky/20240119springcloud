@@ -17,6 +17,8 @@ spring:
           uri: lb://order-service
           predicates:
             - Path=/tb-order/** #端口号后边是不是以tb-user开头，是的换就负载均衡到user-service服务上
+      default-filters:
+        - AddRequestHeader=li,xiaoliniubai!
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver

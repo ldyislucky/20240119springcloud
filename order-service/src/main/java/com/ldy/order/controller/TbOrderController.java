@@ -10,11 +10,7 @@ import com.ldy.order.general.R;
 import com.ldy.order.service.ITbOrderService;
 import com.xiaoleilu.hutool.bean.BeanUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -46,7 +42,9 @@ public class TbOrderController {
     }
 
     @GetMapping("/feign/{id}")
-    public R<TbOrderDTO> getOrderDto(@PathVariable("id") Long id){
+    public R<TbOrderDTO> getOrderDto(@PathVariable("id") Long id,
+                                     @RequestHeader(value = "li",required = false) String li){
+        System.out.println(li);
         TbOrder tbOrder = iTbOrderService.getById(id);
         TbOrderDTO tbOrderDTO = new TbOrderDTO();
         BeanUtil.copyProperties(tbOrder,tbOrderDTO);
