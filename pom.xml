@@ -22,6 +22,7 @@
         <module>feign-api</module>
         <module>getway</module>
         <module>mqproducer</module>
+        <module>mqconsumer</module>
     </modules>
 
     <properties>

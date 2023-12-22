@@ -11,6 +11,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="mqconsumer" />
         <module name="getway" />
         <module name="order-service" />
         <module name="user-service" />
@@ -31,6 +32,7 @@
       <module name="designmode" options="-parameters" />
       <module name="feign-api" options="-parameters" />
       <module name="getway" options="-parameters" />
+      <module name="mqconsumer" options="-parameters" />
       <module name="mqproducer" options="-parameters" />
       <module name="mybatiesplus" options="-parameters" />
       <module name="order-service" options="-parameters" />
