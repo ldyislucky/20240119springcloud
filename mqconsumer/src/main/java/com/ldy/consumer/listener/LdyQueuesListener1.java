@@ -11,11 +11,13 @@ public class LdyQueuesListener1 {
         System.out.println("接收到消息："+msg);
     }
     @RabbitListener(queues = {"ldyqueues1"})
-    public void c1(String str){
+    public void c1(String str) throws InterruptedException {
         System.out.println("c1接收到消息："+str);
+        Thread.sleep(20);
     }
     @RabbitListener(queues = {"ldyqueues1"})
-    public void c2(String str){
+    public void c2(String str) throws InterruptedException {
         System.err.println("c2接收到消息："+str);
+        Thread.sleep(200);
     }
 }

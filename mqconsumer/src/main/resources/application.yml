@@ -5,5 +5,8 @@ spring:
     username: ldy
     password: 123321
     virtual-host: /ldy
+    listener:
+      simple:
+        prefetch: 1  #设置所有的消费者每次都只能取一条数据，完成任务之后，再来取，可以实现能者多劳的效果
 server:
   port: 8085

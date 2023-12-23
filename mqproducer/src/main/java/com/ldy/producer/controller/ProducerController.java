@@ -15,7 +15,7 @@ public class ProducerController {
     private final RabbitTemplate rabbitTemplate;
     @GetMapping("/p1")
     public void t1(){
-        log.info("模式一生产队列");
+        log.info("模式一生产消息到队列");
         String queue = "ldyqueues1";
         String str = "holle world!";
         rabbitTemplate.convertAndSend(queue,str);
@@ -23,7 +23,7 @@ public class ProducerController {
 
     @GetMapping("/p2")
     public void t2() throws InterruptedException {
-        log.info("模式二生产队列");
+        log.info("模式二生产消息到队列");
         String queue = "ldyqueues1";
         String str = "holle world! -";
         for (int i = 0; i < 50; i++) {
