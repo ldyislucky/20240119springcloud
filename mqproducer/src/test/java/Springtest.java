@@ -1,4 +1,4 @@
-import com.ldy.MqProApplication;
+import com.ldy.producer.MqProApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

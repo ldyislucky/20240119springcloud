@@ -5,3 +5,5 @@ spring:
     username: ldy
     password: 123321
     virtual-host: /ldy
+server:
+  port: 8084
