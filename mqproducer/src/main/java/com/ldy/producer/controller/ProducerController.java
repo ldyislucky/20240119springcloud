@@ -25,9 +25,9 @@ public class ProducerController {
     public void t2() throws InterruptedException {
         log.info("模式二生产消息到队列");
         String queue = "ldyqueues1";
-        String str = "holle world! -";
+        String str;
         for (int i = 0; i < 50; i++) {
-            str= str+i;
+            str = "holle world! -"+i;
             rabbitTemplate.convertAndSend(queue,str);
             Thread.sleep(20);
         }
