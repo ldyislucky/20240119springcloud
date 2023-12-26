@@ -1,3 +1,6 @@
+server:
+  port: 8084
+
 spring:
   rabbitmq:
     host: 192.168.46.132
@@ -5,5 +8,3 @@ spring:
     username: ldy
     password: 123321
     virtual-host: /ldy
-server:
-  port: 8084
