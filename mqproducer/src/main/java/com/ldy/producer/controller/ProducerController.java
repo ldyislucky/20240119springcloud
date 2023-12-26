@@ -32,4 +32,14 @@ public class ProducerController {
             Thread.sleep(20);
         }
     }
+    @GetMapping("pudsub")
+    public void t3(){
+        log.info("发布订阅模式生产消息到队列");
+        String exfanout = "ldy.ex";
+        String str;
+        for (int i = 0; i < 50; i++) {
+            str = "holle world! -"+i;
+            rabbitTemplate.convertAndSend(exfanout,"",str);
+        }
+    }
 }

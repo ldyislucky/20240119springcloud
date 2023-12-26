@@ -18,7 +18,7 @@ public class LdyFanoutExchangeConfig {
     @Bean
     public FanoutExchange ldyFanoutExchange1() throws IOException, TimeoutException {
         FanoutExchange fanoutExchange = new FanoutExchange("ldy.ex");
-        amqpAdmin.declareExchange(fanoutExchange);
+        amqpAdmin.declareExchange(fanoutExchange);//将交换机声明到mq上
         return fanoutExchange;
     }
     @Bean

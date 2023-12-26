@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 
 @SpringBootApplication
 @SpringBootConfiguration
-@ComponentScan({"com.ldy.consumer.config"})
+@ComponentScan({"com.ldy.consumer.config","com.ldy.consumer.listener"})
 public class MqConsumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(MqConsumerApplication.class,args);
