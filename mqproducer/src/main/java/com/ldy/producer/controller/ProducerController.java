@@ -53,4 +53,14 @@ public class ProducerController {
             rabbitTemplate.convertAndSend(direx,key,str);
         }
     }
+    @GetMapping("/topic/{key}")
+    public void t5(@PathVariable("key")String key){
+        log.info("执行t5");
+        String direx = "ldy.topic";
+        String str;
+        for (int i = 0; i < 50; i++) {
+            str = "holle world! -"+key+i;
+            rabbitTemplate.convertAndSend(direx,key,str);
+        }
+    }
 }
