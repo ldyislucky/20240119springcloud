@@ -11,11 +11,5 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class Springtest {
     @Autowired
     private RabbitTemplate rabbitTemplate;
-    @Test
-    public void t1(){
-        String queue = "ldyqueues1";
-        String str = "holle world!";
-        rabbitTemplate.convertAndSend(queue,str);
-        System.out.println(rabbitTemplate);
-    }
+
 }
