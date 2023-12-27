@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,7 +33,7 @@ public class ProducerController {
             Thread.sleep(20);
         }
     }
-    @GetMapping("pudsub")
+    @GetMapping("/pudsub")
     public void t3(){
         log.info("发布订阅模式生产消息到队列");
         String exfanout = "ldy.ex";
@@ -40,6 +41,16 @@ public class ProducerController {
         for (int i = 0; i < 50; i++) {
             str = "holle world! -"+i;
             rabbitTemplate.convertAndSend(exfanout,"",str);
+        }
+    }
+    @GetMapping("/dir/{key}")
+    public void t4(@PathVariable("key")String key){
+        log.info("执行t4");
+        String direx = "ldy.dir";
+        String str;
+        for (int i = 0; i < 50; i++) {
+            str = "holle world! -"+key+i;
+            rabbitTemplate.convertAndSend(direx,key,str);
         }
     }
 }
