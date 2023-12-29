@@ -27,7 +27,7 @@ public class testFilter1 implements GlobalFilter {
         Set<String> strings = params.keySet();
         for (String string : strings) {
             List<String> value = params.get(string);
-            log.info(string+"  :  "+value);
+            log.info(string+"  :  "+value.get(0));
         }
         return chain.filter(exchange);
     }

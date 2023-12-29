@@ -28,6 +28,7 @@ public class AuthorizationFilter implements GlobalFilter {
         MultiValueMap<String, String> params = request.getQueryParams();
         List<String> user = params.get("authorization");
         if ("admin".equals(user.get(0))){
+            log.info("***************");
             return chain.filter(exchange);
         }
         ServerHttpResponse response = exchange.getResponse();
