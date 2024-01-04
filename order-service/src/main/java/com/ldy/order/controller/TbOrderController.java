@@ -10,6 +10,7 @@ import com.ldy.order.general.R;
 import com.ldy.order.service.ITbOrderService;
 import com.xiaoleilu.hutool.bean.BeanUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -34,7 +35,9 @@ public class TbOrderController {
      */
     private final NacosConfig nacosConfig;
     private final ITbOrderService iTbOrderService;
-    private final UserClients userClients;
+
+    @Autowired
+    private UserClients userClients;
     @GetMapping("/{id}")
     public R<TbOrder> getOrder(@PathVariable("id") Long id){
         TbOrder tbOrder = iTbOrderService.getById(id);
