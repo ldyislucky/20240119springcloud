@@ -1,4 +1,9 @@
 reggie:
   path: D:\D\document\javaprograms1\caogao\img
-
+spring:
+  cloud:
+    sentinel:
+      web-context-unify: false # 关闭context整合,因为链路模式中，是对不同来源的两个链路做监控。但是sentinel默认会给进入SpringMVC的所有请求设置同一个root资源，会导致链路模式失效。
+      transport:
+        dashboard: localhost:8090
 
