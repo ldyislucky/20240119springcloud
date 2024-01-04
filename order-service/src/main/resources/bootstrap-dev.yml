@@ -2,7 +2,7 @@ spring:
   cloud:
     nacos:
       # Nacos 服务器地址（后来修改为了nginx的地址）
-      server-addr: 127.0.0.1:80
+      server-addr: 192.168.46.132:8848
       config:
         #试一下热更新能生效不，不能生效，球用没有
         #enabled: true

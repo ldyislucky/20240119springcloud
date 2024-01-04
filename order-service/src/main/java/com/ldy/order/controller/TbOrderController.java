@@ -53,6 +53,28 @@ public class TbOrderController {
         return R.success(tbOrderDTO);
     }
 
+    @GetMapping("/data1/{id}")
+    public R<TbOrderDTO> getOrderDto1(@PathVariable("id") Long id,
+                                     @RequestHeader(value = "li",required = false) String li){
+        System.out.println(li);
+        TbOrder tbOrder = iTbOrderService.getById(id);
+        TbOrderDTO tbOrderDTO = new TbOrderDTO();
+        BeanUtil.copyProperties(tbOrder,tbOrderDTO);
+        TbUser tbUser = userClients.getById(tbOrder.getUserId());
+        tbOrderDTO.setTbUser(tbUser);
+        return R.success(tbOrderDTO);
+    }
+    @GetMapping("/data2/{id}")
+    public R<TbOrderDTO> getOrderDto2(@PathVariable("id") Long id,
+                                      @RequestHeader(value = "li",required = false) String li){
+        System.out.println(li);
+        TbOrder tbOrder = iTbOrderService.getById(id);
+        TbOrderDTO tbOrderDTO = new TbOrderDTO();
+        BeanUtil.copyProperties(tbOrder,tbOrderDTO);
+        TbUser tbUser = userClients.getById(tbOrder.getUserId());
+        tbOrderDTO.setTbUser(tbUser);
+        return R.success(tbOrderDTO);
+    }
 
 
     @GetMapping ("/t1")
