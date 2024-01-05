@@ -30,7 +30,10 @@ public class TbUserController {
         return R.success(tbUser);
     }
     @GetMapping("user/{id}")
-    public TbUser getUserById(@PathVariable("id") Long id){
+    public TbUser getUserById(@PathVariable("id") Long id) throws InterruptedException {
+        if (id==1){
+            Thread.sleep(60);
+        }
         return iTbUserService.getById(id);
     }
 

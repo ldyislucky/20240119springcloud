@@ -24,6 +24,12 @@ public class AuthorizationFilter implements GlobalFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         log.info("登录过滤器！");
+
+        if (true){
+            return chain.filter(exchange);//先让过滤器失效
+        }
+
+
         ServerHttpRequest request = exchange.getRequest() ;
         MultiValueMap<String, String> params = request.getQueryParams();
         List<String> user = params.get("authorization");

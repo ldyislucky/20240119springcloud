@@ -10,6 +10,7 @@ import com.ldy.order.general.R;
 import com.ldy.order.service.ITbOrderService;
 import com.xiaoleilu.hutool.bean.BeanUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
  * @author author
  * @since 2023-12-10
  */
+@Slf4j
 @RestController
 @RequestMapping("/tb-order")
 @RequiredArgsConstructor
@@ -47,7 +49,7 @@ public class TbOrderController {
     @GetMapping("/feign/{id}")
     public R<TbOrderDTO> getOrderDto(@PathVariable("id") Long id,
                                      @RequestHeader(value = "li",required = false) String li){
-        System.out.println(li);
+        log.info("网关请求头是："+li);
         TbOrder tbOrder = iTbOrderService.getById(id);
         TbOrderDTO tbOrderDTO = new TbOrderDTO();
         BeanUtil.copyProperties(tbOrder,tbOrderDTO);
@@ -59,7 +61,7 @@ public class TbOrderController {
     @GetMapping("/data1/{id}")
     public R<TbOrderDTO> getOrderDto1(@PathVariable("id") Long id,
                                      @RequestHeader(value = "li",required = false) String li){
-        System.out.println(li);
+        log.info("网关请求头是："+li);
         TbOrder tbOrder = iTbOrderService.getById(id);
         TbOrderDTO tbOrderDTO = new TbOrderDTO();
         BeanUtil.copyProperties(tbOrder,tbOrderDTO);
@@ -70,7 +72,7 @@ public class TbOrderController {
     @GetMapping("/data2/{id}")
     public R<TbOrderDTO> getOrderDto2(@PathVariable("id") Long id,
                                       @RequestHeader(value = "li",required = false) String li){
-        System.out.println(li);
+        log.info("网关请求头是："+li);
         TbOrder tbOrder = iTbOrderService.getById(id);
         TbOrderDTO tbOrderDTO = new TbOrderDTO();
         BeanUtil.copyProperties(tbOrder,tbOrderDTO);

@@ -18,7 +18,7 @@ spring:
           predicates:
             - Path=/tb-order/** #端口号后边是不是以tb-user开头，是的换就负载均衡到order-service服务上
       default-filters:
-        - AddRequestHeader=li,xiaoliniubai!
+        - AddRequestHeader=li,xiaoliniubai
       globalcors: # 全局的跨域处理
         add-to-simple-url-handler-mapping: true # 解决options请求被拦截问题
         corsConfigurations:
