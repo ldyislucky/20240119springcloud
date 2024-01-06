@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @MapperScan("com.ldy.order.mapper")
 @ComponentScan({"com.ldy.order.mapper","com.ldy.order.service","com.ldy.order.entity","com.ldy.order.controller",
-        "com.ldy.order.config"})
+        "com.ldy.order.config","com.ldy.order.sentinel"})
 @EnableFeignClients(clients = UserClients.class,defaultConfiguration = DefaultFeignConfiguration.class)//clients = UserClients.class指的是扫描引用的依赖中的类为bean
 public class OrderApplication {
     public static void main(String[] args) {
