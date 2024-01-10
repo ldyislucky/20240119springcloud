@@ -1,6 +1,9 @@
 package cn.itcast.storage.service;
 
-public interface StorageService{
+import cn.itcast.storage.entity.Storage;
+import com.baomidou.mybatisplus.extension.service.IService;
+
+public interface StorageService extends IService<Storage> {
 
     /**
      * 扣除存储数量

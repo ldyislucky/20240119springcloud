@@ -1,7 +1,9 @@
 package cn.itcast.storage.service.impl;
 
+import cn.itcast.storage.entity.Storage;
 import cn.itcast.storage.mapper.StorageMapper;
 import cn.itcast.storage.service.StorageService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Slf4j
 @Service
-public class StorageServiceImpl implements StorageService {
+public class StorageServiceImpl extends ServiceImpl<StorageMapper, Storage> implements StorageService  {
 
     @Autowired
     private StorageMapper storageMapper;
