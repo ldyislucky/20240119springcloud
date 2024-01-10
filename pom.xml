@@ -23,6 +23,7 @@
         <module>getway</module>
         <module>mqproducer</module>
         <module>mqconsumer</module>
+        <module>storage-service</module>
     </modules>
 
     <properties>
