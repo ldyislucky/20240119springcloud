@@ -6,4 +6,17 @@ spring:
       web-context-unify: false # 关闭context整合,因为链路模式中，是对不同来源的两个链路做监控。但是sentinel默认会给进入SpringMVC的所有请求设置同一个root资源，会导致链路模式失效。
       transport:
         dashboard: localhost:8090
-
+seata:
+  registry: # TC服务注册中心的配置，微服务根据这些信息去注册中心获取tc服务地址
+    # 参考tc服务自己的registry.conf中的配置
+    type: nacos
+    nacos: # tc
+      server-addr: 192.168.46.132:8848
+      namespace: ""
+      group: DEFAULT_GROUP
+      application: seata-server # tc服务在nacos中的服务名称
+      cluster: SH #没用
+  tx-service-group: seata-demo # 事务组，根据这个获取tc服务的cluster名称
+  service:
+    vgroup-mapping: # 事务组与TC服务cluster的映射关系
+      seata-demo: BJ
