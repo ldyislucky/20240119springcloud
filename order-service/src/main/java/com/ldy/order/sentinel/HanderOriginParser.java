@@ -13,6 +13,12 @@ public class HanderOriginParser implements RequestOriginParser {
     @Override
     public String parseOrigin(HttpServletRequest httpServletRequest) {
         String origin = httpServletRequest.getHeader("origin");
+
+        if (true){
+            return origin; //先把请求头拦截器置为无效
+        }
+
+
         log.info("origin的值为："+origin);
         if (StringUtils.isEmpty(origin)){
             origin="blank";

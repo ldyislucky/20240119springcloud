@@ -9,6 +9,7 @@ import com.ldy.order.entity.OrderTbl;
 import com.ldy.order.general.R;
 import com.ldy.order.service.IOrderTblService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author author
  * @since 2024-01-10
  */
+@Slf4j
 @RestController
 @RequestMapping("/order-tbl")
 @RequiredArgsConstructor
@@ -34,6 +36,7 @@ public class OrderTblController {
     private final StorageClient storageClient;
     @PostMapping("/ordertx")
     public R<String> createOrder(@RequestBody OrderTbl orderTbl){
+        log.info("创建订单！");
         iOrderTblService.save(orderTbl);
         //提取用户类
         AccountTbl accountTbl = new AccountTbl();
@@ -45,6 +48,7 @@ public class OrderTblController {
         storage.setCount(orderTbl.getCount());
         //扣款
         userClients.updateMoney(accountTbl);
+        log.info("99999999999999");
         //更新货物数量
         storageClient.updateGoods(storage);
         return R.success("下单成功!");
