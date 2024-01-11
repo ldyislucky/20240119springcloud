@@ -36,7 +36,8 @@ public class StorageController {
         Storage storageOld = storageService.lambdaQuery()
                 .eq(Storage::getCommodityCode, storage.getCommodityCode())
                 .one();
-        storage.setCount(storageOld.getCount()-storage.getCount());
+        storage.setCount(storageOld.getCount()-
+                storage.getCount());
         storageService.lambdaUpdate()
                 .eq(Storage::getCommodityCode,storage.getCommodityCode())
                 .update(storage);
