@@ -8,6 +8,7 @@ import com.ldy.feign.entity.Storage;
 import com.ldy.order.entity.OrderTbl;
 import com.ldy.order.general.R;
 import com.ldy.order.service.IOrderTblService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ public class OrderTblController {
     private final UserClients userClients;
     private final StorageClient storageClient;
     @PostMapping("/ordertx")
+    @GlobalTransactional//开启微服务全局事务，只需要在事务开始的入口处添加即可
     public R<String> createOrder(@RequestBody OrderTbl orderTbl){
         log.info("创建订单！");
         iOrderTblService.save(orderTbl);

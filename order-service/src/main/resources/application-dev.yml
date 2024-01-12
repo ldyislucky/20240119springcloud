@@ -20,3 +20,4 @@ seata:
   service:
     vgroup-mapping: # 事务组与TC服务cluster的映射关系
       seata-demo: BJ
+  data-source-proxy-mode: XA   #设置微服务事务为xa模式，需要在涉及到的服务中调用
