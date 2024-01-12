@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Slf4j
 @RestController
-@RequestMapping("/tb-order")
+@RequestMapping("tb-order")
 @RequiredArgsConstructor
 //@RefreshScope//这种热更新的方式应该是只适用于这个类，可能没有很方便
 public class TbOrderController {

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * @author 虎哥
  */
 @RestController
-@RequestMapping("storage")
+@RequestMapping("storage")//storage前面不要加“/”，会报错找不到路径
 public class StorageController {
 
     @Autowired

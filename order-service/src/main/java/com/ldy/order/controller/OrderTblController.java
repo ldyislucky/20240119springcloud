@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Slf4j
 @RestController
-@RequestMapping("/order-tbl")
+@RequestMapping("order-tbl")
 @RequiredArgsConstructor
 public class OrderTblController {
     @Autowired
