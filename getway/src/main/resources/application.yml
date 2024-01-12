@@ -16,7 +16,7 @@ spring:
         - id: GoOrderService
           uri: lb://order-service
           predicates:
-            #- Path=/tb-order/** #端口号后边是不是以tb-user开头，是的换就负载均衡到order-service服务上
+            - Path=/tb-order/** #端口号后边是不是以tb-user开头，是的换就负载均衡到order-service服务上
             - Path=/order-tbl/**
       default-filters:
         - AddRequestHeader=li,xiaoliniubai

@@ -44,7 +44,6 @@ public class OrderTblController {
         storage.setCount(orderTbl.getCount());
         //扣款
         userClients.updateMoney(accountTbl);
-        log.info("99999999999999");
         //更新货物数量
         storageClient.updateGoods(storage);
         return R.success("下单成功!");
