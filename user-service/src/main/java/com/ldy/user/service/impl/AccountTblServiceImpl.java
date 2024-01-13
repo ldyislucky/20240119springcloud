@@ -17,4 +17,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class AccountTblServiceImpl extends ServiceImpl<AccountTblMapper, AccountTbl> implements IAccountTblService {
 
+    @Override
+    public void dudect(AccountTbl accountTbl) {
+        AccountTbl accountTblOld = lambdaQuery().eq(AccountTbl::getUserId, accountTbl.getUserId())
+                .one();
+        lambdaUpdate().eq(AccountTbl::getUserId,accountTbl.getUserId())
+                .set(AccountTbl::getMoney,accountTblOld.getMoney()-accountTbl.getMoney())
+                .update();
+    }
+
+    @Override
+    public void undoDudect(AccountTbl accountTbl) {
+        AccountTbl accountTblOld = lambdaQuery().eq(AccountTbl::getUserId, accountTbl.getUserId())
+                .one();
+        lambdaUpdate().eq(AccountTbl::getUserId,accountTbl.getUserId())
+                .set(AccountTbl::getMoney,accountTblOld.getMoney()+accountTbl.getMoney())
+                .update();
+    }
 }

@@ -12,5 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2024-01-10
  */
 public interface IAccountTblService extends IService<AccountTbl> {
+    void dudect(AccountTbl accountTbl);
+    void undoDudect(AccountTbl accountTbl);
 
 }
