@@ -3,6 +3,7 @@ package com.ldy.user.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.ldy.user.entity.AccountTbl;
+import com.ldy.user.service.AccountTccService;
 import com.ldy.user.service.IAccountTblService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -24,6 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountTblController {
     @Autowired
     IAccountTblService accountTblService;
+    @Autowired
+    AccountTccService accountTccService;
     @PutMapping("/pay")
     public String updateMoney(@RequestBody AccountTbl user){
         AccountTbl userOld = accountTblService.lambdaQuery()
@@ -35,6 +38,11 @@ public class AccountTblController {
                 .lambdaUpdate()
                 .eq(AccountTbl::getUserId,user.getUserId())
                 .update(user);
+        return "用户余额扣除成功！";
+    }
+    @PutMapping("/pay1")
+    public String pay1(@RequestBody AccountTbl user){
+        accountTccService.pay(user.getUserId(), user.getMoney());
         return "用户余额扣除成功！";
     }
 }

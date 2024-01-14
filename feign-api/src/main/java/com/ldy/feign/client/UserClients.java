@@ -19,5 +19,8 @@ public interface UserClients {
     TbUser getById(@PathVariable("id") Long id);
     @PutMapping("/account-tbl/pay")
     String updateMoney(@RequestBody AccountTbl accountTbl);
+    @PutMapping("/account-tbl/pay1")
+    String updateMoney1(@RequestBody AccountTbl accountTbl);
+
 
 }

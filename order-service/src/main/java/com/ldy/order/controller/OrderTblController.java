@@ -50,5 +50,24 @@ public class OrderTblController {
         storageClient.updateGoods(storage);
         return R.success("下单成功!");
     }
+    @PostMapping("/ordertx1")
+    @GlobalTransactional//开启微服务全局事务，只需要在事务开始的入口处添加即可
+    public R<String> createOrder1(@RequestBody OrderTbl orderTbl){
+        log.info("创建订单！");
+        iOrderTblService.save(orderTbl);
+        //提取用户类
+        AccountTbl accountTbl = new AccountTbl();
+        accountTbl.setUserId(orderTbl.getUserId());
+        accountTbl.setMoney(orderTbl.getMoney());
+        //提取仓库类
+        Storage storage = new Storage();
+        storage.setCommodityCode(orderTbl.getCommodityCode());
+        storage.setCount(orderTbl.getCount());
+        //扣款
+        userClients.updateMoney1(accountTbl);
+        //更新货物数量
+        storageClient.updateGoods(storage);
+        return R.success("下单成功!");
+    }
 
 }

@@ -27,6 +27,12 @@ public class UserClientFallbackFactory implements FallbackFactory<UserClients> {
                 log.error("支付异常", throwable);
                 return "支付异常";
             }
+
+            @Override
+            public String updateMoney1(AccountTbl accountTbl) {
+                log.error("支付异常", throwable);
+                return "支付异常";
+            }
         };
     }
 }
