@@ -59,15 +59,9 @@ public class OrderTblController {
         AccountTbl accountTbl = new AccountTbl();
         accountTbl.setUserId(orderTbl.getUserId());
         accountTbl.setMoney(orderTbl.getMoney());
-        //提取仓库类
-        Storage storage = new Storage();
-        storage.setCommodityCode(orderTbl.getCommodityCode());
-        storage.setCount(orderTbl.getCount());
         //扣款
-        userClients.updateMoney1(accountTbl);
-        //更新货物数量
-        storageClient.updateGoods(storage);
-        return R.success("下单成功!");
+        String s = userClients.updateMoney1(accountTbl);
+        return R.success(s);
     }
 
 }
