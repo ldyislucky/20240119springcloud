@@ -37,7 +37,13 @@ public class AccountFreezeTbl implements Serializable {
     private Integer freezeMoney;
 
     @ApiModelProperty(value = "事务状态，0:try，1:confirm，2:cancel")
-    private AccountFreezeTblStatus state;
+    private Integer state;
+
+    public static abstract class State {
+        public final static int TRY = 0;
+        public final static int CONFIRM = 1;
+        public final static int CANCEL = 2;
+    }
 
 
 }

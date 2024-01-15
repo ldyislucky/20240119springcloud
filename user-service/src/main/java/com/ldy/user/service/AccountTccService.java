@@ -14,6 +14,4 @@ public interface AccountTccService {
              @BusinessActionContextParameter(paramName = "money") int money);
     boolean confirm(BusinessActionContext ctx);
     boolean cancle(BusinessActionContext ctx);
-
-
 }

@@ -60,8 +60,8 @@ public class OrderTblController {
         accountTbl.setUserId(orderTbl.getUserId());
         accountTbl.setMoney(orderTbl.getMoney());
         //扣款
-        String s = userClients.updateMoney1(accountTbl);
-        return R.success(s);
+            String s = userClients.updateMoney1(accountTbl);
+            return R.success(s);
     }
 
 }
