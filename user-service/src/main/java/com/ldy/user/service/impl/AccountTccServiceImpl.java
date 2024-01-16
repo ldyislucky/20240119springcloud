@@ -5,8 +5,10 @@ import com.ldy.user.entity.AccountTbl;
 import com.ldy.user.mapper.AccountFreezeTblMapper;
 import com.ldy.user.mapper.AccountTblMapper;
 import com.ldy.user.service.AccountTccService;
+import com.ldy.user.service.IAccountFreezeTblService;
 import io.seata.core.context.RootContext;
 import io.seata.rm.tcc.api.BusinessActionContext;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class AccountTccServiceImpl implements AccountTccService {
     private final AccountTblMapper accountTblMapper;
     private final AccountFreezeTblMapper freezeTblMapper;
+    private final IAccountFreezeTblService freezeTblService;
+
     @Transactional
     @Override
     public void pay(String userid, int money) {
@@ -25,13 +29,13 @@ public class AccountTccServiceImpl implements AccountTccService {
         AccountTbl accountTbl = new AccountTbl();
         //扣除余额
         accountTblMapper.deduct(userid,money);
-        //余额冻结表添加信息
-        AccountFreezeTbl accountFreezeTbl = new AccountFreezeTbl();
-        accountFreezeTbl.setXid(xid);
-        accountFreezeTbl.setUserId(userid);
-        accountFreezeTbl.setFreezeMoney(money);
-        accountFreezeTbl.setState(AccountFreezeTbl.State.TRY);
-        freezeTblMapper.insert(accountFreezeTbl);
+        //新增冻结金额数据
+        AccountFreezeTbl freezeTbl = new AccountFreezeTbl();
+        freezeTbl.setXid(xid);
+        freezeTbl.setUserId(userid);
+        freezeTbl.setFreezeMoney(money);
+        freezeTbl.setState(AccountFreezeTbl.State.TRY);
+        freezeTblMapper.insert(freezeTbl);
     }
 
     @Override

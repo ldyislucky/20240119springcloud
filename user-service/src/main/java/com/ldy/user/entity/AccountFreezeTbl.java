@@ -29,7 +29,7 @@ public class AccountFreezeTbl implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "xid", type = IdType.AUTO)
+    @TableId(value = "xid", type = IdType.INPUT)
     private String xid;
 
     private String userId;
