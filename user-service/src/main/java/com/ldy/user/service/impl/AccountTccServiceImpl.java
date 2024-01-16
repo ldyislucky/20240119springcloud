@@ -26,6 +26,10 @@ public class AccountTccServiceImpl implements AccountTccService {
     public void pay(String userid, int money) {
         String xid = RootContext.getXID();
         log.info("pay的xid："+xid);
+//        AccountFreezeTbl tbl = freezeTblMapper.selectById(xid);
+//        if (tbl!=null){
+//            return;
+//        }
         AccountTbl accountTbl = new AccountTbl();
         //扣除余额
         accountTblMapper.deduct(userid,money);

@@ -8,6 +8,7 @@ import com.ldy.feign.entity.Storage;
 import com.ldy.order.entity.OrderTbl;
 import com.ldy.order.general.R;
 import com.ldy.order.service.IOrderTblService;
+import feign.FeignException;
 import io.seata.spring.annotation.GlobalTransactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -59,7 +60,20 @@ public class OrderTblController {
         AccountTbl accountTbl = new AccountTbl();
         accountTbl.setUserId(orderTbl.getUserId());
         accountTbl.setMoney(orderTbl.getMoney());
+        //提取仓库类
+        Storage storage = new Storage();
+        storage.setCommodityCode(orderTbl.getCommodityCode());
+        storage.setCount(orderTbl.getCount());
         //扣款
+        try {
+            //扣款
+            userClients.updateMoney1(accountTbl);
+            //更新货物数量
+            storageClient.updateGoods(storage);
+        }catch (FeignException e){
+            log.error("下单失败，原因:{}", e.contentUTF8(), e);
+            throw new RuntimeException(e.contentUTF8(), e);
+        }
             String s = userClients.updateMoney1(accountTbl);
             return R.success(s);
     }
