@@ -8,3 +8,13 @@ spring:
     username: ldy
     password: 123321
     virtual-host: /ldy
+    #异步的启用关联确认模式。在此模式下，Spring AMQP 将为每个发送的消息生成一个唯一的标识符，并在消息成功到达 RabbitMQ
+    #后立即向生产者发送一个相关的确认消息。通过关联确认模式，生产者可以更好地跟踪每个消息的状态，并在必要时进行重试或处理。
+    #主要用于确认消息是否已成功到达 RabbitMQ
+    publisher-confirm-type: correlated
+    #主要用于确认消息是否已成功路由到目标队列或交换机。
+    # 可以让生产者立即得到消息返回的通知
+    publisher-returns: true
+    # 可以让生产者主动处理无法路由的消息
+    template:
+      mandatory: true

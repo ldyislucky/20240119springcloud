@@ -2,7 +2,10 @@ package com.ldy.producer.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.util.concurrent.FailureCallback;
+import org.springframework.util.concurrent.SuccessCallback;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -75,4 +79,37 @@ public class ProducerController {
         map.put("2","二");
         rabbitTemplate.convertAndSend(direx,key,map);
     }
+    @GetMapping("/callback")
+    public void t7(String exc,String key){
+        log.info("执行t7!");
+        Map<String, String> map = new HashMap<>();
+        map.put("1","一");
+        map.put("2","二");
+        CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
+        correlationData.getFuture().addCallback(new SuccessCallback<CorrelationData.Confirm>() {
+            @Override
+            public void onSuccess(CorrelationData.Confirm res) {
+
+                if (res.isAck()){
+                    /**
+                     * 消息成功投递到交换机，返回ack
+                     */
+                    log.debug("消息已投递到交换机！消息ID：{}, 消息内容: {}",correlationData.getId(),correlationData.getReturnedMessage());
+                } else {
+                    /**
+                     * 消息未投递到交换机，返回nack
+                     */
+                    log.error("消息未投递到交换机！消息ID：{}, 消息内容: {}",correlationData.getId(),correlationData.getReturnedMessage());
+                }
+            }
+        }, new FailureCallback() {
+            @Override
+            public void onFailure(Throwable throwable) {
+                log.error("消息发送失败！",throwable);
+            }
+        });
+        rabbitTemplate.convertAndSend(exc,key,map,correlationData);
+    }
+
+
 }

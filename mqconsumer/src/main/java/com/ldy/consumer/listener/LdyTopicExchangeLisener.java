@@ -33,7 +33,7 @@ public class LdyTopicExchangeLisener {
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(name = "topic.queue3"),
             exchange = @Exchange(name = "ldy.topic",type = ExchangeTypes.TOPIC),
-            key = "#.xxx"
+            key = "#.map"
     ))
     public void t3(Map<String,String> msg){
         log.info("t3执行");
