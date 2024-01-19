@@ -15,8 +15,8 @@
         <module name="mqproducer" />
         <module name="mqconsumer" />
         <module name="order-service" />
-        <module name="user-service" />
         <module name="storage-service" />
+        <module name="user-service" />
         <module name="feign-api" />
       </profile>
     </annotationProcessing>
@@ -29,7 +29,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="20231210springcloud" options="" />
+      <module name="20240119springcloud" options="" />
       <module name="designmode" options="-parameters" />
       <module name="feign-api" options="-parameters" />
       <module name="getway" options="-parameters" />
