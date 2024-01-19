@@ -21,6 +21,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="20231210springcloud" target="1.8" />
       <module name="designmode" target="1.8" />
       <module name="mybatiesplus" target="1.8" />
       <module name="mybatisplusstu" target="1.8" />
