@@ -15,7 +15,7 @@ public class ProducerConfig implements ApplicationContextAware {
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         RabbitTemplate rabbitTemplate = applicationContext.getBean(RabbitTemplate.class);
         /**
-         * 在交换机和队列之间出现问题会触发这个方法！
+         * 在交换机和队列之间出现问题会触发这个方法！如果没有到达交换机不会触发这个方法，但是交换机为空的时候是会触发这个方法的！
          * 返回ACK，及路由失败原因。
          */
         rabbitTemplate.setReturnCallback((message, i, s, s1, s2) -> {

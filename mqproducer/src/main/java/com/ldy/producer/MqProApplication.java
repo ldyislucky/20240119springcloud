@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan({"com.ldy.producer.controller"})
+@ComponentScan({"com.ldy.producer.controller","com.ldy.producer.config"})
 @SpringBootApplication
 public class MqProApplication {
     public static void main(String[] args) {

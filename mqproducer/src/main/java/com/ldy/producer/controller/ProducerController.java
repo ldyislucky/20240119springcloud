@@ -6,10 +6,7 @@ import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.util.concurrent.FailureCallback;
 import org.springframework.util.concurrent.SuccessCallback;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -79,9 +76,9 @@ public class ProducerController {
         map.put("2","二");
         rabbitTemplate.convertAndSend(direx,key,map);
     }
-    @GetMapping("/callback")
-    public void t7(String exc,String key){
-        log.info("执行t7!");
+    @GetMapping("/callback")//getmapping只支持路径参数，不支持json请求体参数
+    public void t7( String exc, String key) throws InterruptedException {
+        log.info("执行t7!交换机：{}, 队列key: {}",exc,key);
         Map<String, String> map = new HashMap<>();
         map.put("1","一");
         map.put("2","二");
@@ -94,7 +91,7 @@ public class ProducerController {
                     /**
                      * 消息成功投递到交换机，返回ack
                      */
-                    log.debug("消息已投递到交换机！消息ID：{}, 消息内容: {}",correlationData.getId(),correlationData.getReturnedMessage());
+                    log.error("消息已投递到交换机！消息ID：{}, 消息内容: {}",correlationData.getId(),correlationData.getReturnedMessage());
                 } else {
                     /**
                      * 消息未投递到交换机，返回nack
@@ -109,7 +106,43 @@ public class ProducerController {
             }
         });
         rabbitTemplate.convertAndSend(exc,key,map,correlationData);
+        // 休眠一会儿，等待ack回执
+        Thread.sleep(3000);
     }
+
+//    @GetMapping("/callback1")//
+//    public void t8( @PathVariable("exc") String exc, @PathVariable("key") String key) throws InterruptedException {
+//        log.info("执行t8!交换机：{}, 队列key: {}",exc,key);
+//        Map<String, String> map = new HashMap<>();
+//        map.put("1","一");
+//        map.put("2","二");
+//        CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
+//        correlationData.getFuture().addCallback(new SuccessCallback<CorrelationData.Confirm>() {
+//            @Override
+//            public void onSuccess(CorrelationData.Confirm res) {
+//
+//                if (res.isAck()){
+//                    /**
+//                     * 消息成功投递到交换机，返回ack
+//                     */
+//                    log.debug("消息已投递到交换机！消息ID：{}, 消息内容: {}",correlationData.getId(),correlationData.getReturnedMessage());
+//                } else {
+//                    /**
+//                     * 消息未投递到交换机，返回nack
+//                     */
+//                    log.error("消息未投递到交换机！消息ID：{}, 消息内容: {}",correlationData.getId(),correlationData.getReturnedMessage());
+//                }
+//            }
+//        }, new FailureCallback() {
+//            @Override
+//            public void onFailure(Throwable throwable) {
+//                log.error("消息发送失败！",throwable);
+//            }
+//        });
+//        rabbitTemplate.convertAndSend(exc,key,map,correlationData);
+//        // 休眠一会儿，等待ack回执
+//        Thread.sleep(2000);
+//    }
 
 
 }
