@@ -37,6 +37,7 @@ public class LdyTopicExchangeLisener {
     ))
     public void t3(Map<String,String> msg){
         log.info("t3执行");
+        System.out.println(1/0);
         System.out.println("获取到topic.queue3的消息为："+msg);
     }
 }

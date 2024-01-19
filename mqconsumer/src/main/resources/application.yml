@@ -1,3 +1,5 @@
+server:
+  port: 8085
 logging:
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
@@ -11,6 +13,15 @@ spring:
     listener:
       simple:
         prefetch: 1  #设置所有的消费者每次都只能取一条数据，完成任务之后，再来取，可以实现能者多劳的效果
+        acknowledge-mode: auto    #失败重试机制，默认是auto
+        retry:
+          enabled: true # 开启消费者失败重试
+          initial-interval: 1000 # 初识的失败等待时长为1秒
+          multiplier: 3 # 失败的等待时长倍数，下次等待时长 = multiplier * last-interval
+          max-attempts: 4 # 最大重试次数
+          stateless: true # true无状态；false有状态。如果业务中包含事务，这里改为false
+
+
 #spring:
 #  rabbitmq:
 #    host: 192.168.46.132
@@ -21,5 +32,3 @@ spring:
 #    listener:
 #      simple:
 #        prefetch: 1  #设置所有的消费者每次都只能取一条数据，完成任务之后，再来取，可以实现能者多劳的效果
-server:
-  port: 8085

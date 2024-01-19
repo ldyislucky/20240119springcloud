@@ -107,7 +107,7 @@ public class ProducerController {
         });
         rabbitTemplate.convertAndSend(exc,key,map,correlationData);
         // 休眠一会儿，等待ack回执
-        Thread.sleep(3000);
+        //Thread.sleep(1000);
     }
 
 //    @GetMapping("/callback1")//
