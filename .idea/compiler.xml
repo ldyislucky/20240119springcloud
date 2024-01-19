@@ -24,6 +24,7 @@
       <module name="mybatiesplus" target="1.8" />
       <module name="mybatisplusstu" target="1.8" />
       <module name="reggie-take-out" target="1.8" />
+      <module name="storage-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
