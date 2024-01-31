@@ -17,7 +17,7 @@ public class DLDirectListener {
             exchange = @Exchange(name = "ldy.dldir"),
             key = {"dl"}
     ))
-    public void m1(Map<String,String> msg){
+    public void m1(Map<String,String> msg){//消费者消费类型要与生产者保持一致，不然收不到消息
         log.error("死信交换机接收到消息："+msg);
     }
 }
