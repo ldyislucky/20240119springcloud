@@ -91,12 +91,12 @@ public class ProducerController {
                     /**
                      * 消息成功投递到交换机，返回ack
                      */
-                    log.error("消息已投递到交换机！消息ID：{}, 消息内容: {}",correlationData.getId(),correlationData.getReturnedMessage());
+                    log.error("消息已投递到交换机！消息ID：{}, 消息内容: {}",correlationData.getId(),map);
                 } else {
                     /**
                      * 消息未投递到交换机，返回nack
                      */
-                    log.error("消息未投递到交换机！消息ID：{}, 消息内容: {}",correlationData.getId(),correlationData.getReturnedMessage());
+                    log.error("消息未投递到交换机！消息ID：{}, 消息内容: {}",correlationData.getId(),map);
                 }
             }
         }, new FailureCallback() {
@@ -143,6 +143,9 @@ public class ProducerController {
 //        // 休眠一会儿，等待ack回执
 //        Thread.sleep(2000);
 //    }
+    @GetMapping("/ttl")
+    public void ttl(String exc, String key){}
+
 
 
 }

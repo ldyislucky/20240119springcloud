@@ -24,7 +24,9 @@ public class ErrorMessageConfig {
 
     @Bean
     public Queue errorQueue(){
-        Queue queue = new Queue("errorkey");
+        Queue queue = QueueBuilder
+                .durable("errorkey")
+                .build();
         amqpAdmin.declareQueue(queue);
         return queue;
     }
@@ -39,4 +41,6 @@ public class ErrorMessageConfig {
     public MessageRecoverer republishMessageRecoverer(RabbitTemplate template){
         return new RepublishMessageRecoverer(template,"ldy.error","errorkey");
     }
+
+
 }
