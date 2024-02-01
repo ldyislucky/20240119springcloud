@@ -21,7 +21,7 @@ public class DeathLetterExConfig {
     @Bean
     public Queue getQueue(){
         Queue queue = QueueBuilder.durable("ttl.queue")
-                .ttl(1000)
+                .ttl(10000)
                 .deadLetterExchange("ldy.dldir")
                 .deadLetterRoutingKey("dl")
                 .build();
@@ -31,7 +31,10 @@ public class DeathLetterExConfig {
 
     @Bean
     public Binding getBind(){
-        Binding binding = BindingBuilder.bind(getQueue()).to(getExchange()).with("ttl.queue");
+        /**
+         * 键值要与生产者的键值保持一致
+         */
+        Binding binding = BindingBuilder.bind(getQueue()).to(getExchange()).with("dl");
         amqpAdmin.declareBinding(binding);
         return binding;
     }
