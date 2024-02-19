@@ -12,6 +12,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="getway" />
+        <module name="quartzshow" />
         <module name="mqproducer" />
         <module name="mqconsumer" />
         <module name="order-service" />
@@ -38,6 +39,8 @@
       <module name="mqproducer" options="-parameters" />
       <module name="mybatiesplus" options="-parameters" />
       <module name="order-service" options="-parameters" />
+      <module name="other" options="" />
+      <module name="quartzshow" options="-parameters" />
       <module name="reggie-take-out" options="-parameters" />
       <module name="storage-service" options="-parameters" />
       <module name="user-service" options="-parameters" />

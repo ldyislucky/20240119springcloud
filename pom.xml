@@ -24,6 +24,7 @@
         <module>mqproducer</module>
         <module>mqconsumer</module>
         <module>storage-service</module>
+        <module>other</module>
     </modules>
 
     <properties>
