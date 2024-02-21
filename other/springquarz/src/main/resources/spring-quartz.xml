@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置 Quartz 调度器 -->
+    <bean id="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <!-- 触发器列表 -->
+            <list>
+                <ref bean="quartzTestTrigger" />
+            </list>
+        </property>
+    </bean>
+
+    <!-- 简单触发器配置 -->
+    <bean id="quartzTestTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="quartzTestJob"/>
+        <!-- 20秒后开始运行 -->
+        <property name="startDelay" value="2000" />
+        <!-- 每隔三十秒重复 -->
+        <property name="repeatInterval" value="3000" />
+    </bean>
+
+    <!-- Quartz 测试服务类 -->
+    <bean id="quartzTest" class="org.quarzshow.ldy.service.QuartzService" />
+
+    <!-- 配置 Quartz 任务详情 -->
+    <bean id="quartzTestJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="quartzTest"></property>
+        <property name="targetMethod" value="run"></property>
+        <property name="concurrent" value="false"></property><!-- 不并发运行 -->
+    </bean>
+
+</beans>

@@ -12,9 +12,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="getway" />
-        <module name="quartzshow" />
         <module name="mqproducer" />
         <module name="mqconsumer" />
+        <module name="springquarz" />
         <module name="order-service" />
         <module name="storage-service" />
         <module name="user-service" />
@@ -26,6 +26,7 @@
       <module name="designmode" target="1.8" />
       <module name="mybatiesplus" target="1.8" />
       <module name="mybatisplusstu" target="1.8" />
+      <module name="quartz2.x" target="1.8" />
       <module name="reggie-take-out" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -40,8 +41,9 @@
       <module name="mybatiesplus" options="-parameters" />
       <module name="order-service" options="-parameters" />
       <module name="other" options="" />
-      <module name="quartzshow" options="-parameters" />
+      <module name="quartz2.x" options="-parameters" />
       <module name="reggie-take-out" options="-parameters" />
+      <module name="springquarz" options="-parameters" />
       <module name="storage-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
