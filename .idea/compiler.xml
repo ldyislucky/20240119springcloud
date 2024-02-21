@@ -15,6 +15,7 @@
         <module name="mqproducer" />
         <module name="mqconsumer" />
         <module name="springquarz" />
+        <module name="springbootquartz" />
         <module name="order-service" />
         <module name="storage-service" />
         <module name="user-service" />
@@ -43,6 +44,7 @@
       <module name="other" options="" />
       <module name="quartz2.x" options="-parameters" />
       <module name="reggie-take-out" options="-parameters" />
+      <module name="springbootquartz" options="-parameters" />
       <module name="springquarz" options="-parameters" />
       <module name="storage-service" options="-parameters" />
       <module name="user-service" options="-parameters" />

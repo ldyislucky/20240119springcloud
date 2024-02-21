@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>springquarz</module>
+        <module>springbootquartz</module>
     </modules>
 
     <properties>
