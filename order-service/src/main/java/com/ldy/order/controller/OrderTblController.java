@@ -51,7 +51,7 @@ public class OrderTblController {
         storageClient.updateGoods(storage);
         return R.success("下单成功!");
     }
-    @PostMapping("/ordertx1")
+    @PostMapping("/ordertx1")//tcc事务
     @GlobalTransactional//开启微服务全局事务，只需要在事务开始的入口处添加即可
     public R<String> createOrder1(@RequestBody OrderTbl orderTbl){
         log.info("创建订单！");
