@@ -26,11 +26,10 @@ public class AccountTccServiceImpl implements AccountTccService {
     public void pay(String userid, int money) {
         String xid = RootContext.getXID();
         log.info("pay的xid："+xid);
-//        AccountFreezeTbl tbl = freezeTblMapper.selectById(xid);
-//        if (tbl!=null){
-//            return;
-//        }
-        AccountTbl accountTbl = new AccountTbl();
+        AccountFreezeTbl tbl = freezeTblMapper.selectById(xid);
+        if (tbl!=null){
+            return;
+        }
         //扣除余额
         accountTblMapper.deduct(userid,money);
         //新增冻结金额数据
@@ -55,7 +54,22 @@ public class AccountTccServiceImpl implements AccountTccService {
     public boolean cancle(BusinessActionContext ctx) {
         //获取冻结数据
         String xid = ctx.getXid();
+        log.info("cancle的xid："+xid);
         AccountFreezeTbl accountFreezeTbl = freezeTblMapper.selectById(xid);
+        String userid = ctx.getActionContext().get("userid").toString();
+        //空回滚逻辑
+        if(accountFreezeTbl==null){
+            AccountFreezeTbl freezeTbl = new AccountFreezeTbl();
+            freezeTbl.setXid(xid);
+            freezeTbl.setUserId(userid);
+            freezeTbl.setFreezeMoney(0);
+            freezeTbl.setState(AccountFreezeTbl.State.CANCEL);
+            freezeTblMapper.insert(freezeTbl);
+        }
+        if (accountFreezeTbl.getState()==AccountFreezeTbl.State.CANCEL){
+            return true;
+        }
+
         //撤销余额扣减
         accountTblMapper.undoDeduct(accountFreezeTbl.getUserId(), accountFreezeTbl.getFreezeMoney());
         //更新冻结表的冻结金额和状态
