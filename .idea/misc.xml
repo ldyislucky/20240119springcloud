@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
@@ -13,6 +14,8 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/designmode/pom.xml" />
+        <option value="$PROJECT_DIR$/dubboapi/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbopojo/pom.xml" />
         <option value="$PROJECT_DIR$/mybatiesplus/pom.xml" />
         <option value="$PROJECT_DIR$/reggie-take-out/pom.xml" />
       </set>

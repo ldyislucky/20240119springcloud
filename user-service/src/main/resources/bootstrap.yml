@@ -4,15 +4,15 @@ spring:
     name: user-service
   profiles:
     active: dev
-  cloud:
-    nacos:
-      # Nacos 服务器地址
-      server-addr: 127.0.0.1:80
-      config:
-        # 应用程序的命名空间
-        namespace: c44ea5b1-5a7a-4ec6-bf02-fbee39d29856
-        # 配置文件的数据 ID
-        file-extension: yaml # 配置文件扩展名，可选配置
+#  cloud:
+#    nacos:
+#      # Nacos 服务器地址
+#      server-addr: 192.168.46.132:8848
+#      config:
+#        # 应用程序的命名空间
+#        namespace: c44ea5b1-5a7a-4ec6-bf02-fbee39d29856
+#        # 配置文件的数据 ID
+#        file-extension: yaml # 配置文件扩展名，可选配置
 
 #在指定的命名空间中（没配置就是pulic)中寻找名称为  {”order-service“ +  "-dev" (可有可无）  +   “yaml" }  的文档。
 

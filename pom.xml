@@ -25,6 +25,8 @@
         <module>mqconsumer</module>
         <module>storage-service</module>
         <module>other</module>
+        <module>dubbodemo</module>
+        <module>dubbodemo/dubbouser</module>
     </modules>
 
     <properties>
