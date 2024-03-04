@@ -14,6 +14,6 @@ import org.dubbopojo.ldy.TbUser;
  * @author author
  * @since 2023-12-10
  */
-public interface ITbUserService extends IService<TbUser>, DubboUserApi {
+public interface ITbUserService extends IService<TbUser> {
 
 }

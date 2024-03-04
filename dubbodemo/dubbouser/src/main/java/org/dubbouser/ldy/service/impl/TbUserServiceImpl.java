@@ -18,15 +18,8 @@ import org.springframework.stereotype.Service;
  * @author author
  * @since 2023-12-10
  */
-@DubboService
+@Service
 public class TbUserServiceImpl extends ServiceImpl<TbUserMapper, TbUser> implements ITbUserService {
 
-    @Override
-    public R<TbUser> findUserById(long id) {
-        TbUser tbUser = new TbUser();
-        tbUser.setId(666L);
-        tbUser.setAddress("测试");
-        tbUser.setUsername("测试");
-        return R.success(tbUser);
-    }
+
 }

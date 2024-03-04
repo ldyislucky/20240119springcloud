@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @MapperScan("org.dubbouser.ldy.mapper")
 @ComponentScan({"org.dubbouser.ldy.mapper","org.dubbouser.ldy.service","org.dubbouser.ldy.controller"})
-@EnableFeignClients
 public class DubboUserApplication {
     public static void main(String[] args) {
         SpringApplication.run(DubboUserApplication.class,args);

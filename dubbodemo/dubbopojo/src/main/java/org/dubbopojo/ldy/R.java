@@ -1,6 +1,7 @@
 package org.dubbopojo.ldy;
 
 import lombok.Data;
+import lombok.Getter;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -17,6 +18,7 @@ public class R<T> implements Serializable {
 
     private String msg; //错误信息
 
+    @Getter
     private T data; //数据
 
     private Map map = new HashMap(); //动态数据
