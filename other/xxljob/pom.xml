@@ -5,26 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.example</groupId>
-        <artifactId>20240119springcloud</artifactId>
+        <artifactId>other</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>other</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>springquarz</module>
-        <module>springbootquartz</module>
-        <module>xxljob</module>
-    </modules>
+    <artifactId>xxljob</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <dependencies>
-
-    </dependencies>
 
 </project>
