@@ -15,6 +15,7 @@
         <module>springquarz</module>
         <module>springbootquartz</module>
         <module>xxljob</module>
+        <module>springbootQuartzAnnotation</module>
     </modules>
 
     <properties>
