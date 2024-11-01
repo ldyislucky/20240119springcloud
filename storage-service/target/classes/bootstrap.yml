@@ -1,0 +1,23 @@
+spring:
+  application:
+    #应用的名称 启动失败与在这个地方是否配置服务名称无关
+    name: storage-service
+  profiles:
+    active: dev
+
+
+#在指定命名空间的情况下（开启namespace，没配置就是public)目前来看，一般情况下好像不配置
+#在指定的命名空间中dev环境中寻找名称为  {”order-service“ +  "-dev" (不带后缀-dev的文档也能被加载）  +   “yaml" }  的文档。
+#但是其它环境包括public环境下的order-service文档无法被读取
+
+#在不指定命名空间的情况下，不开启namespace，就是public环境下
+#在public环境下寻找{”order-service“ +  "-dev" (不带后缀-dev的文档也能被加载）  +   “yaml" }  的文档。
+#但是无法加载-test、-prod等其它结尾的配置文档
+
+
+
+
+
+
+
+

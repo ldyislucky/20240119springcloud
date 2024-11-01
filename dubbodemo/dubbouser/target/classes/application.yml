@@ -1,0 +1,56 @@
+server:
+  port: 8084
+spring:
+  application:
+    #应用的名称
+    name: dubbouser-service
+  profiles:
+    active: dev
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.46.130:3306/cloud_user?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: general
+      password: general
+  redis:
+    host: 192.168.46.130  # Redis 服务器地址
+    port: 6379       # Redis 服务器端口号
+    password: root      # Redis 服务器密码
+    timeout: 2000    # 连接超时时间，单位毫秒
+    jedis:
+      pool:
+        # 连接池最大连接数，可选，默认值为8
+        max-active: 8
+        # 连接池最大空闲连接数，可选，默认值为8
+        max-idle: 8
+        # 连接池最小空闲连接数，可选，默认值为0
+        min-idle: 0
+  cache:
+    redis:
+      time-to-live: 1800000 #缓存的过期时间被设置为1800000毫秒（30分钟）
+mybatis-plus:
+  configuration:
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+dubbo:
+  protocol:
+    name: dubbo #此处用于指定Dubbo服务使用的通信协议名称。Dubbo支持多种协议，如dubbo（默认协议，基于Netty实现），rmi，hessian，http等。如果不指定，默认使用dubbo协议。这个配置项对于服务提供者来说非常重要，因为它决定了服务是如何被暴露和调用的。
+    port: 20881 #只有生产部署在同一台机器上才用的到，部署在不同机器上是用不到的，这里指定了服务暴露的端口号。Dubbo服务提供者会在这个端口监听来自消费者的调用请求。端口号可以根据实际情况进行修改，以避免端口冲突。
+  application:
+    name: dubbouser-service #这里用于指定当前Dubbo应用程序的名称。这个名字对于服务治理非常关键，因为它是服务注册中心用来标识不同服务提供者或消费者的一个重要信息。在一个大型的微服务架构中，每个微服务都应该有一个唯一的应用名称，以便在服务注册中心进行区分和管理。
+  registry:
+    address: nacos://192.168.46.132:8848   #使用SpringCloud中的注册中心
+  scan:
+    base-packages: org.dubbouser.ldy.service  #dubbo中包扫描
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-package org.dubbouser.ldy.service.impl;
+package org.dubbouser.ldy.service.dubbo;
 
 import org.apache.dubbo.config.annotation.DubboService;
 import org.dubboapi.ldy.user.DubboUserApi;
