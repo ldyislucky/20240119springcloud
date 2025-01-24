@@ -9,6 +9,14 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: GoDubboOrderService #规则id
+          uri: lb://dubboorder-service
+          predicates:
+            - Path=/dubbo-order/**
+        - id: GoDubboUserService #规则id
+          uri: lb://dubbouser-service
+          predicates:
+            - Path=/dubbo-user/**
         - id: GoUserService #规则id
           uri: lb://user-service #负载均衡到user-service服务上
           predicates:
