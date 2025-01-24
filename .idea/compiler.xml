@@ -15,6 +15,7 @@
         <module name="xxljob" />
         <module name="springquarz" />
         <module name="springbootquartz" />
+        <module name="springbatchexample" />
         <module name="storage-service" />
         <module name="user-service" />
         <module name="feign-api" />
@@ -56,6 +57,8 @@
       <module name="other" options="" />
       <module name="quartz2.x" options="-parameters" />
       <module name="reggie-take-out" options="-parameters" />
+      <module name="springbatch" options="" />
+      <module name="springbatchexample" options="-parameters" />
       <module name="springbootQuartzAnnotation" options="-parameters" />
       <module name="springbootquartz" options="-parameters" />
       <module name="springquarz" options="-parameters" />

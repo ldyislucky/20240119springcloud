@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2023-12-10
  */
 @RestController
-@RequestMapping("/tb-user")
+@RequestMapping("/dubbo-user")
 @RequiredArgsConstructor
 public class TbUserController {
     @Autowired

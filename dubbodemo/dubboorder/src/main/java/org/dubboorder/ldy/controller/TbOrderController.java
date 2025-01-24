@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2024-03-04
  */
 @RestController
-@RequestMapping("tb-order")
+@RequestMapping("dubbo-order")
 public class TbOrderController {
 
     @Autowired

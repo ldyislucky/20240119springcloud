@@ -27,6 +27,7 @@
         <module>other</module>
         <module>dubbodemo</module>
         <module>dubbodemo/dubbouser</module>
+        <module>springbatch</module>
     </modules>
 
     <properties>
