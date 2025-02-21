@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>springbatchexample</module>
+        <module>springaop</module>
     </modules>
 
     <properties>
