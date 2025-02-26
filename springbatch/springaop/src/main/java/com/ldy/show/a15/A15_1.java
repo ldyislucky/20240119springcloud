@@ -1,4 +1,4 @@
-package com.ldy.show.impl;
+package com.ldy.show.a15;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -24,6 +24,10 @@ public class A15_1 {
         bean1.foo();
         System.out.println(bean1.getClass());
         // 此代理是为了解决功能增强问题
+        System.out.println(context.getBean("scopedTarget.bean1").getClass());
+        Bean1 bean2 = context.getBean(Bean1.class);
+        bean2.foo();
+        System.out.println(bean1.getClass());
         System.out.println(context.getBean("scopedTarget.bean1").getClass());
     }
 

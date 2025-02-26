@@ -1,4 +1,9 @@
+server:
+  port: 8089
 spring:
+  batch:
+    job:
+      enabled: false   #false表示不随SpringBootApplication启动而自动运行
   datasource:
     username: root
     password: root

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @Slf4j
-@Order(1)
+@Order(4)
 @Component
 public class testFilter1 implements GlobalFilter {
     @Override
