@@ -17,3 +17,12 @@ spring:
       mode: never
 
 #这里要注意， sql.init.model 第一次启动为always， 后面启动需要改为never，否则每次执行SQL都会异常。
+
+mybatis:
+  configuration:
+    default-executor-type: batch    #批量执行更新操作（Insert/Update/Delete），减少与数据库的交互次数。
+
+
+job:
+  data:
+    path: C:/Users/28637/Desktop/草稿/存款批处理培训

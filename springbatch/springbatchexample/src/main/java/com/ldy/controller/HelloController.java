@@ -15,7 +15,7 @@ public class HelloController {
     private JobLauncher launcher;
 
     @Autowired
-    private JobLauncher launcher1;
+    private JobLauncher launcher1;//跟launcher是一致的
 
     @Autowired
     private Job job;

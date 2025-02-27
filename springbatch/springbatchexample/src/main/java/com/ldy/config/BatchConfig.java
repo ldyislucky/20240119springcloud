@@ -52,7 +52,7 @@ public class BatchConfig {
     }
 
     @Bean
-    public Job jobweb(){
+    public Job jobweb(){//这种方式注册的bean可以是多例的，实例名就是方法名
         Job job = jobBuilderFactory.get("hello-restful-job1")
                 .start(stepweb())
                 .incrementer(new RunIdIncrementer())
