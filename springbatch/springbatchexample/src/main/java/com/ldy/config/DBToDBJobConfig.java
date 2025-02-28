@@ -53,13 +53,12 @@ public class DBToDBJobConfig {
         System.out.println("----------MyBatisPagingItemReader开始-----from: " + from + "  -----to:" + to + "  -----每片数量:" + range);
         MyBatisPagingItemReader<Employee> itemReader = new MyBatisPagingItemReader<Employee>();
         itemReader.setSqlSessionFactory(sqlSessionFactory);
-        itemReader.setQueryId("com.langfeiyes.exp.mapper.EmployeeMapper.selectTempForList");
+        itemReader.setQueryId("com.ldy.mapper.EmployeeMapper.selectTempForList");
         itemReader.setPageSize(DBToDBJobConfig.PAGESIZE);
         Map<String, Object> map = new HashMap<>();
         map.put("from", from);
         map.put("to", to);
         itemReader.setParameterValues(map);
-
         return itemReader;
     }
 
@@ -69,7 +68,7 @@ public class DBToDBJobConfig {
     public MyBatisBatchItemWriter<Employee> dbToDBItemWriter(){
         MyBatisBatchItemWriter<Employee> itemWriter = new MyBatisBatchItemWriter<>();
         itemWriter.setSqlSessionFactory(sqlSessionFactory);
-        itemWriter.setStatementId("com.langfeiyes.exp.mapper.EmployeeMapper.save");  //操作sql
+        itemWriter.setStatementId("com.ldy.mapper.EmployeeMapper.save");  //操作sql
         return itemWriter;
     }
 

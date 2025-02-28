@@ -14,9 +14,7 @@ import org.apache.ibatis.annotations.Delete;
  */
 public interface EmployeeMapper extends BaseMapper<Employee> {
     /**
-     * 添加临时表
-     * @param employee
-     * @return
+     * 保存临时表
      */
     int saveTemp(Employee employee);
 
@@ -24,7 +22,5 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
     @Delete("TRUNCATE TABLE employee")
     void truncateAll();
 
-    // 清空 employee_temp 表（TRUNCATE）
-    @Delete("TRUNCATE TABLE employee_temp")
-    void truncateTemp();
+
 }

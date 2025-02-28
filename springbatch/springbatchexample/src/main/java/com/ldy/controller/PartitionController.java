@@ -1,6 +1,7 @@
 package com.ldy.controller;
 
 import com.ldy.service.IEmployeeService;
+import com.ldy.service.IEmployeeTempService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.explore.JobExplorer;
@@ -21,6 +22,8 @@ public class PartitionController {
     @Autowired
     private IEmployeeService employeeService;
     @Autowired
+    IEmployeeTempService employeeTempService;
+    @Autowired
     private JobLauncher jobLauncher;
     @Autowired
     private JobExplorer jobExplorer;  //job 展示对象
@@ -36,7 +39,7 @@ public class PartitionController {
 
     @GetMapping("/csvToDB")
     public String csvToDB() throws Exception {
-        employeeService.truncateTemp(); //清空数据运行多次执行
+        employeeTempService.truncateTemp(); //清空数据运行多次执行
 
         //需要多次执行，run.id 必须重写之前，再重构一个新的参数对象
         JobParameters jobParameters = new JobParametersBuilder(new JobParameters(),jobExplorer)
@@ -45,6 +48,5 @@ public class PartitionController {
         JobExecution run = jobLauncher.run(csvToDBJob, jobParameters);
         return run.getId().toString();
     }
-
 
 }

@@ -12,5 +12,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2025-02-27
  */
 public interface IEmployeeTempService extends IService<EmployeeTemp> {
-
+    /**
+     * 清空employee_temp数据
+     */
+    void truncateTemp();
 }

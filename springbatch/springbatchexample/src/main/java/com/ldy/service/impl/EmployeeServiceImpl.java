@@ -64,8 +64,5 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         employeeMapper.truncateAll();
     }
 
-    @Override
-    public void truncateTemp() {
-        employeeMapper.truncateTemp();
-    }
+
 }

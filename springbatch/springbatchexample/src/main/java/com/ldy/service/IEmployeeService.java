@@ -24,8 +24,5 @@ public interface IEmployeeService extends IService<Employee> {
      */
     void truncateAll();
 
-    /**
-     * 清空employee_temp数据
-     */
-    void truncateTemp();
+
 }
