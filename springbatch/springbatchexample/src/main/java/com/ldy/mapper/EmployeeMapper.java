@@ -13,10 +13,7 @@ import org.apache.ibatis.annotations.Delete;
  * @since 2025-02-27
  */
 public interface EmployeeMapper extends BaseMapper<Employee> {
-    /**
-     * 保存临时表
-     */
-    int saveTemp(Employee employee);
+
 
     // 清空 employee 表（TRUNCATE）
     @Delete("TRUNCATE TABLE employee")

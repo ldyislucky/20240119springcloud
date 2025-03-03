@@ -1,6 +1,6 @@
 package com.ldy.config;
 
-import com.ldy.entity.Employee;
+import com.ldy.entity.EmployeeTemp;
 import com.ldy.listener.CsvToDBJobListener;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.batch.MyBatisBatchItemWriter;
@@ -38,14 +38,14 @@ public class CsvToDBJobConfig {
 
     //多线程读-读文件，使用FlatFileItemReader
     @Bean
-    public FlatFileItemReader<Employee> cvsToDBItemReader(){
-        FlatFileItemReader<Employee> reader = new FlatFileItemReaderBuilder<Employee>()
+    public FlatFileItemReader<EmployeeTemp> cvsToDBItemReader(){
+        FlatFileItemReader<EmployeeTemp> reader = new FlatFileItemReaderBuilder<EmployeeTemp>()
                 .name("employeeCSVItemReader")
                 .saveState(false) //防止状态被覆盖
                 .resource(new PathResource(new File(path, "employee.csv").getAbsolutePath()))
                 .delimited()
                 .names("id", "name", "age", "sex")
-                .targetType(Employee.class)
+                .targetType(EmployeeTemp.class)
                 .build();
 
         return reader;
@@ -53,18 +53,18 @@ public class CsvToDBJobConfig {
 
     //数据库写-使用mybatis提供批处理读入
     @Bean
-    public MyBatisBatchItemWriter<Employee> cvsToDBItemWriter(){
-        MyBatisBatchItemWriter<Employee> itemWriter = new MyBatisBatchItemWriter<>();
+    public MyBatisBatchItemWriter<EmployeeTemp> cvsToDBItemWriter(){
+        MyBatisBatchItemWriter<EmployeeTemp> itemWriter = new MyBatisBatchItemWriter<>();
         itemWriter.setSqlSessionFactory(sqlSessionFactory); //需要指定sqlsession工厂
         //指定要操作sql语句，路径id为：EmployeeMapper.xml定义的sql语句id
-        itemWriter.setStatementId("com.ldy.mapper.EmployeeMapper.saveTemp");  //操作sql
+        itemWriter.setStatementId("com.ldy.mapper.EmployeeTempMapper.saveTemp");  //操作sql
         return itemWriter;
     }
 
     @Bean
     public Step csvToDBStep(){
         return stepBuilderFactory.get("csvToDBStep")
-                .<Employee, Employee>chunk(10000)  //每个块10000个 共50个
+                .<EmployeeTemp, EmployeeTemp>chunk(10000)  //每个块10000个 共50个
                 .reader(cvsToDBItemReader())
                 .writer(cvsToDBItemWriter())
                 .taskExecutor(new SimpleAsyncTaskExecutor())  //多线程读写

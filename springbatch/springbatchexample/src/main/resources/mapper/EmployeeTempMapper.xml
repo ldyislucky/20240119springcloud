@@ -10,4 +10,8 @@
         <result column="sex" property="sex" />
     </resultMap>
 
+    <insert id="saveTemp" keyColumn="id" useGeneratedKeys="true" keyProperty="id">
+        insert into employee_temp(id, name, age, sex) values(#{id},#{name},#{age},#{sex})
+    </insert>
+
 </mapper>
