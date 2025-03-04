@@ -1,6 +1,8 @@
 package com.ldy.config;
 
+import com.ldy.chunk.processor.EmployeeTempProcessor;
 import com.ldy.entity.Employee;
+import com.ldy.entity.EmployeeTemp;
 import com.ldy.until.DBToDBPartitioner;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.batch.MyBatisBatchItemWriter;
@@ -33,9 +35,11 @@ public class DBToDBJobConfig {
     private JobBuilderFactory jobBuilderFactory;
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
-
     @Autowired
     private SqlSessionFactory sqlSessionFactory;
+
+    @Autowired
+    private EmployeeTempProcessor employeeTempProcessor;
 
     public static int PAGESIZE = 1000;   //mybatis分页读取数据，跟chunkSize 一样
     public static int RANGE = 10000;  //每个分区读取数据范围(理解为个数)
@@ -45,15 +49,15 @@ public class DBToDBJobConfig {
     //读数据-从employee_temp 表读 -- mybatis
     @Bean
     @StepScope
-    public MyBatisPagingItemReader<Employee> dBToDBJobItemReader(
+    public MyBatisPagingItemReader<EmployeeTemp> dBToDBJobItemReader(
             @Value("#{stepExecutionContext[from]}") final Integer from,
             @Value("#{stepExecutionContext[to]}") final Integer to,
             @Value("#{stepExecutionContext[range]}") final Integer range){
 
         System.out.println("----------MyBatisPagingItemReader开始-----from: " + from + "  -----to:" + to + "  -----每片数量:" + range);
-        MyBatisPagingItemReader<Employee> itemReader = new MyBatisPagingItemReader<Employee>();
+        MyBatisPagingItemReader<EmployeeTemp> itemReader = new MyBatisPagingItemReader<EmployeeTemp>();
         itemReader.setSqlSessionFactory(sqlSessionFactory);
-        itemReader.setQueryId("com.ldy.mapper.EmployeeMapper.selectTempForList");
+        itemReader.setQueryId("com.ldy.mapper.EmployeeTempMapper.selectAllTemp");
         itemReader.setPageSize(DBToDBJobConfig.PAGESIZE);
         Map<String, Object> map = new HashMap<>();
         map.put("from", from);
@@ -62,13 +66,12 @@ public class DBToDBJobConfig {
         return itemReader;
     }
 
-
     //数据库写- 写入到employee 表中
     @Bean
     public MyBatisBatchItemWriter<Employee> dbToDBItemWriter(){
         MyBatisBatchItemWriter<Employee> itemWriter = new MyBatisBatchItemWriter<>();
         itemWriter.setSqlSessionFactory(sqlSessionFactory);
-        itemWriter.setStatementId("com.ldy.mapper.EmployeeMapper.save");  //操作sql
+        itemWriter.setStatementId("com.ldy.mapper.EmployeeMapper.saveData");  //操作sql
         return itemWriter;
     }
 
@@ -91,8 +94,9 @@ public class DBToDBJobConfig {
     @Bean
     public Step workStep() {
         return stepBuilderFactory.get("workStep")
-                .<Employee, Employee>chunk(DBToDBJobConfig.PAGESIZE)
+                .<EmployeeTemp, Employee>chunk(DBToDBJobConfig.PAGESIZE)
                 .reader(dBToDBJobItemReader(null, null, null))
+                .processor(employeeTempProcessor)
                 .writer(dbToDBItemWriter())
                 .build();
     }

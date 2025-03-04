@@ -9,13 +9,13 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration//怎么能不小心把这个注解忘了？
 public class MybatisPlusConfig {
-    /**
-     * 配置分页
-     */
-    @Bean
-    public MybatisPlusInterceptor addPage(){
-        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
-        return interceptor;
-    }
+//    /**
+//     * 配置分页
+//     */
+//    @Bean
+//    public MybatisPlusInterceptor addPage(){
+//        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+//        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+//        return interceptor;
+//    }
 }

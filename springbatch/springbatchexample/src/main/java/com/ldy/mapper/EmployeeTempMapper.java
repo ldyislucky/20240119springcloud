@@ -5,6 +5,8 @@ import com.ldy.entity.EmployeeTemp;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Delete;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -24,4 +26,7 @@ public interface EmployeeTempMapper extends BaseMapper<EmployeeTemp> {
     // 清空 employee_temp 表（TRUNCATE）
     @Delete("TRUNCATE TABLE employee_temp")
     void truncateTemp();
+
+    List<EmployeeTemp> selectAllTemp();
+
 }

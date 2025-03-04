@@ -19,5 +19,9 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
     @Delete("TRUNCATE TABLE employee")
     void truncateAll();
 
+    //保存数据
+    int saveData(Employee employee);
+
+
 
 }

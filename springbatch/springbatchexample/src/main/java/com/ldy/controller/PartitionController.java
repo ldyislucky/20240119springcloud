@@ -30,6 +30,10 @@ public class PartitionController {
     @Autowired
     @Qualifier("csvToDBJob")
     private Job csvToDBJob;
+    @Autowired
+    @Qualifier("dbToDBJob")
+    private Job dbToDBJob;
+
 
     @GetMapping("/dataInit")
     public String startJob(String name) throws Exception {
@@ -48,5 +52,22 @@ public class PartitionController {
         JobExecution run = jobLauncher.run(csvToDBJob, jobParameters);
         return run.getId().toString();
     }
+
+
+    @GetMapping("/DBToDB")
+    public String DBToDB() throws Exception {
+        employeeService.truncateAll(); //清空数据运行多次执行
+
+        //需要多次执行，run.id 必须重写之前，再重构一个新的参数对象
+        JobParameters jobParameters = new JobParametersBuilder(new JobParameters(),jobExplorer)
+                .addLong("time", new Date().getTime())
+                .getNextJobParameters(dbToDBJob).toJobParameters();
+        JobExecution run = jobLauncher.run(dbToDBJob, jobParameters);
+        return run.getId().toString();
+    }
+
+
+
+
 
 }

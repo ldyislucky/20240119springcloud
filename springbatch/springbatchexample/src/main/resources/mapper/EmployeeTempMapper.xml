@@ -14,4 +14,8 @@
         insert into employee_temp(id, name, age, sex) values(#{id},#{name},#{age},#{sex})
     </insert>
 
+    <select id="selectAllTemp" resultType="com.ldy.entity.EmployeeTemp">
+        select * from employee_temp where id between #{from} and #{to}  limit #{_pagesize} OFFSET #{_skiprows}
+    </select>
+
 </mapper>

@@ -10,6 +10,9 @@
         <result column="sex" property="sex" />
     </resultMap>
 
+    <insert id="saveData" >
+        insert into employee(id, name, age, sex) values(#{id},#{name},#{age},#{sex})
+    </insert>
 
 
 </mapper>
